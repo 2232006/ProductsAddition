@@ -5,7 +5,6 @@ var productImg = document.getElementById("formFile");
 var productDescription = document.getElementById("desc");
 var addbtn = document.getElementById("add");
 var Updatebtn = document.getElementById("update");
-// var searchbyname = document.getElementById("productsearch");
 var productList = [];
 
 var Id = 0;
@@ -102,13 +101,11 @@ function displayProduct(list) {
 
 function deleteProduct(id) {
   id = Number(id);
-  //   console.log(id);
   var index = productList.findIndex((product) => product.Id === id);
   productList.splice(index, 1);
   displayProduct(productList);
   addProductToLocalStorage();
 }
-// var currentId = null;
 
 function clearInputs(product) {
   productName.value = product ? product.name : "";
@@ -119,14 +116,9 @@ function clearInputs(product) {
 }
 function editProduct(id) {
   document.getElementById("update").dataset.id = id;
-  //   currentId = Number(id);
   id = Number(id);
   var index = productList.findIndex((product) => product.Id === id);
-  // productName.value = productList[index].name;
-  // productCategory.value = productList[index].category;
-  // productDescription.value = productList[index].description;
 
-  // productPrice.value = productList[index].price;
   clearInputs(productList[index]);
   addbtn.classList.add("d-none");
   Updatebtn.classList.remove("d-none");
@@ -236,8 +228,7 @@ function validImage(element, required) {
   return true;
 }
 function sortByName() {
-  console.log(matched);
-  if (matched.length > 0) {
+  if (matched && matched.length > 0) {
     matched.sort(function (a, b) {
       return a.name.localeCompare(b.name);
     });
@@ -252,7 +243,7 @@ function sortByName() {
   }
 }
 function sortByPrice() {
-  if (matched.length > 0) {
+  if (matched && matched.length > 0) {
     matched.sort(function (a, b) {
       return a.price - b.price;
     });
