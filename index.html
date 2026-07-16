@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./CSS/all.min.css" />
+    <link rel="stylesheet" href="./CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="./CSS/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form class="m-auto mt-5 mb-5 border p-4 rounded-3">
+        <div class="mb-3">
+          <label for="name" class="form-label">Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            oninput="validFormInput(this)"
+          />
+          <span class="text-danger d-none"
+            >Name must contain at least one uppercase character and one
+            lowercase character and may also contain numbers.
+          </span>
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label">Product Price</label>
+          <input
+            type="number"
+            class="form-control"
+            id="price"
+            oninput="validFormInput(this)"
+          />
+          <span class="text-danger d-none"
+            >Price must be between 6000 and 60000
+          </span>
+        </div>
+        <div class="mb-3">
+          <label class="form-label" for="category">Product Category</label>
+          <input
+            type="text"
+            class="form-control"
+            id="category"
+            list="categories"
+            oninput="validFormInput(this)"
+          />
+          <span class="text-danger d-none"
+            >category must be choosen from list
+          </span>
+          <datalist id="categories">
+            <option value="shirts"></option>
+            <option value="bags"></option>
+            <option value="shose"></option>
+            <option value="jeans"></option>
+          </datalist>
+        </div>
+        <div class="mb-3">
+          <label for="formFile" class="form-label">Product image</label>
+          <input
+            class="form-control"
+            type="file"
+            id="formFile"
+            oninput="validImage(this)"
+          />
+          <span class="text-danger d-none" id="chooseImg"
+            >must choose image
+          </span>
+          <span class="text-danger d-none" id="size"
+            >File size is not suitable</span
+          >
+          <span class="text-danger d-none" id="type"
+            >only jpeg,png and webp images can be selected</span
+          >
+        </div>
+        <div class="mb-3">
+          <label for="desc" class="form-label">Product description</label>
+          <textarea
+            class="form-control"
+            id="desc"
+            rows="3"
+            oninput="validFormInput(this)"
+          ></textarea>
+          <span class="text-danger d-none"
+            >description length must be between 4-250 characters or numbers
+          </span>
+        </div>
+        <button
+          type="button"
+          id="add"
+          class="btn btn-primary btn-lg w-100"
+          onclick="addProduct()"
+        >
+          Add Product
+        </button>
+        <button
+          type="button"
+          id="update"
+          class="btn btn-outline-info btn-lg w-100 d-none"
+          onclick="updateProduct()"
+        >
+          Update
+        </button>
+      </form>
+    </div>
+    <div class="products pt-5">
+      <div class="container">
+        <div
+          class="searchandsort d-flex flex-column flex-lg-row justify-content-between align-items-center gap-3"
+        >
+          <div class="search w-50">
+            <input
+              type="text"
+              class="form-control"
+              id="productsearch"
+              placeholder="Search by name"
+              oninput="searchByProductName(this)"
+            />
+          </div>
+          <div
+            class="sort d-flex flex-column align-items-center justify-content-center flex-md-row justify-content-end gap-3"
+          >
+            <div class="sortByname">
+              <label for="" class="fw-bold">Sort by name</label>
+              <button
+                class="bg-info border-0 p-1 pe-2 ps-2"
+                onclick="sortByName()"
+              >
+                <i
+                  class="fa-solid fa-arrow-down-a-z fa-xl"
+                  style="color: rgb(0, 0, 0)"
+                ></i>
+              </button>
+            </div>
+            <div class="sortByname">
+              <label for="" class="fw-bold">Sort by price</label>
+              <button
+                class="bg-info border-0 p-1 pe-2 ps-2"
+                onclick="sortByPrice()"
+              >
+                <i
+                  class="fa-solid fa-arrow-down-short-wide fa-xl"
+                  style="color: rgb(0, 0, 0)"
+                ></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="row gy-4 mt-2" id="products">
+          <!-- <div class="col-12 col-md-6 col-lg-3">
+            <div class="product border rounded-2">
+              <div class="product-img">
+                <img src="./images/product_1_1.png" alt="" class="w-100" />
+              </div>
+              <div class="txt p-2 d-flex flex-column row-gap-3">
+                <div class="cat-price">
+                  <div class="category d-flex justify-content-between">
+                    <span class="badge text-bg-primary fw-bold">shirts</span>
+                    <span class="price text-danger">1000$</span>
+                  </div>
+                </div>
+                <div class="name-dec d-flex flex-column">
+                  <span class="h3">white shirt</span>
+                  <span class="desc">jhgkgjh</span>
+                </div>
+                <div class="icons d-flex justify-content-between">
+                  <button class="edit btn bg-warning">
+                    <i class="fa-solid fa-pen" style="color: rgb(0, 0, 0)"></i>
+                  </button>
+                  <button class="delete btn bg-danger" ">
+                    <i
+                      class="fa-solid fa-trash"
+                      style="color: rgb(0, 0, 0)"
+                    ></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <script src="./JS/bootstrap.bundle.min.js"></script>
+    <script src="./JS/node.js"></script>
+  </body>
+</html>
